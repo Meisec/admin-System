@@ -60,7 +60,7 @@ export default [
     component: Pay,
     meta: { show: true },
     beforeEnter: (to, from, next) => {
-      if (to.paht == '/trade') {
+      if (to.path == '/trade') {
         next()
       } else {
         next(false)
@@ -76,7 +76,7 @@ export default [
     // 路由独享守卫
     beforeEnter: (to, from, next) => {
       // 去交易页面，必须是从购物车而来
-      if (from.path == '/shopcart') {
+      if (from.path === '/shopcart') {
         next()
       } else {
         // 从其他的路由组件而来，停滞在当前

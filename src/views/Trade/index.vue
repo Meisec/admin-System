@@ -147,7 +147,7 @@ export default {
     },
     // 提交订单
     async submitOrder() {
-      console.log(this.$API)
+      // console.log(this.$API)
       // 结构需要携带的参数 交易编码
       let { tradeNo } = this.orderInfo
       let data = {
