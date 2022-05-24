@@ -93,11 +93,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import { throttle } from 'lodash'
 export default {
   name: 'ShopCart',
   computed: {
+    ...mapState('tradeAbout', { address: 'address', orderInfo: 'orderInfo' }),
     ...mapGetters('shopcartAbout', ['cartList']),
     // 最终得到的购物车数据
     cartInfoList() {

@@ -37,7 +37,7 @@ export default {
   name: 'AddCartSuccess',
   computed: {
     skuInfo() {
-      // 将 绘画存储的 数据转换为 对象形式
+      // 将 会话 存储的 数据转换为 对象形式
       return JSON.parse(sessionStorage.getItem('SKUINFO'))
     }
   }

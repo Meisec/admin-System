@@ -56,7 +56,7 @@ router.beforeEach(async (to, from, next) => {
   // console.log(store)
   if (token) {
     // 如果用户已经登录，那么在想去登录页是不行的
-    if (to.path == '/login' || to.path == '/register') {
+    if (to.path === '/login' || to.path === '/register') {
       next('/')
     } else {
       // 登陆了，但是去的不是login

@@ -122,17 +122,18 @@ export default {
       message: '',
       //订单号
       orderId: ''
+      // address: []
     }
   },
-  // 声明周期函数 挂载完毕
+  // 生命周期函数 挂载完毕
   mounted() {
     this.$store.dispatch('tradeAbout/getUserAddress')
     // 获取用户信息
     this.$store.dispatch('tradeAbout/getOrderInfo')
   },
   computed: {
-    ...mapState('tradeAbout', { address: 'address', orderInfo: 'orderInfo' }),
     ...mapGetters('tradeAbout', { order: 'orderInfolist' }),
+
     // 将来提交订单最终选中的地址
     userDefaultAddress() {
       return this.address.find((item) => item.isDefault == 1) || {}
@@ -151,14 +152,15 @@ export default {
       // 结构需要携带的参数 交易编码
       let { tradeNo } = this.orderInfo
       let data = {
-        consignee: this.userDefaultAddress.consignee, // 最终收件人的名字
-        consigneeTel: this.userDefaultAddress.phoneNum, // 最终收件人的手机号
+        consignee: '王大宝', // 最终收件人的名字
+        consigneeTel: 15545668526, // 最终收件人的手机号
         deliveryAddress: this.userDefaultAddress.fullAddress, // 最终收件人的地址
         paymentWay: 'ONLINE', // 支付方 式
         orderComment: this.message, // 买家 的留言信息
         orderDetailList: this.orderInfo.detailArrayList // 商品清单
       }
       let result = await this.$API.reqSubmitOrder(tradeNo, data)
+      console.log(result)
       // 如果提交成功了
       if (result.code == 200) {
         this.orderId = result.data

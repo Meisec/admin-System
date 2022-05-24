@@ -186,7 +186,7 @@ export default {
       }
     },
     // 获取当前点击的那一页
-    getPageNo() {
+    getPageNo(page) {
       // 修改响应式数据page
       this.page = page
       // 再次发起请求

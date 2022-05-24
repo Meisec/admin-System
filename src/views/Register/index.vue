@@ -4,9 +4,7 @@
     <div class="register">
       <h3>
         注册新用户
-        <span class="go"
-          >我有账号，去 <a href="login.html" target="_blank">登陆</a>
-        </span>
+        <span class="go"> 我有账号，去 <a href="login.html">登陆</a> </span>
       </h3>
       <div class="content">
         <label>手机号:</label>
@@ -39,7 +37,7 @@
           placeholder="请输入你的密码"
           v-model="password"
           name="password"
-          v-validate="{ required: true, regex: /^[0-9A-Za-z]{8,20}$/ }"
+          v-validate="{ required: true, regex: /^[0-9A-Za-z]{6,20}$/ }"
           :class="{ invalid: errors.has('password') }"
         />
         <span class="error-msg">{{ errors.first('password') }}</span>
@@ -65,7 +63,7 @@
           name="agree"
           v-validate="{
             required: true,
-            agree: true,
+            agree: true
           }"
           :class="{ invalid: errors.has('agree') }"
         />
@@ -127,23 +125,23 @@ export default {
       }
     },
     async userRegister() {
-      const success = await this.$validator.validateAll();
+      const success = await this.$validator.validateAll()
       // 全部表单验证成功，在向服务器发送请求，进行注册
       // 只要有一个表单验证没有成功，不会发送请求
-        if(success) {
-          try {
-            const { phone, code, password, password1 } = this 
-              await this.$store.dispatch('userAbout/userReister', {
-              phone,
-              code,
-              password
+      if (success) {
+        try {
+          const { phone, code, password, password1 } = this
+          await this.$store.dispatch('userAbout/userReister', {
+            phone,
+            code,
+            password
           })
-        // 如果成功就跳转到 登录页
-        this.$router.push('/login')
-      } catch (error) {
-        alert(error.message)
-      }
+          // 如果成功就跳转到 登录 页
+          this.$router.push('/login')
+        } catch (error) {
+          alert(error.message)
         }
+      }
     }
   }
 }

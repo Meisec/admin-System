@@ -60,7 +60,7 @@ export default [
     component: Pay,
     meta: { show: true },
     beforeEnter: (to, from, next) => {
-      if (to.path == '/trade') {
+      if (from.path == '/trade') {
         next()
       } else {
         next(false)

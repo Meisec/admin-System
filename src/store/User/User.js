@@ -33,7 +33,7 @@ const userAbout = {
     // 用户注册
     async userReister(context, user) {
       let result = await reqUserRegister(user)
-      // console.log(result)
+      console.log(result)
       if (result.code == 200) {
         return 'ok'
       } else {

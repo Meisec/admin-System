@@ -1,9 +1,9 @@
 // 对于axios 进行二次封装
 import axios from 'axios'
 //引入进度条
-// import nprogress from 'nprogress'
+import nprogress from 'nprogress'
 // 引入进度条样式
-// import 'nprogress/nprogress.css'
+import 'nprogress/nprogress.css'
 // 在当前模块中引入 store
 import store from '@/store'
 
@@ -14,6 +14,7 @@ const requests = axios.create({
   // 代表请求超时的时间
   timeout: 5000
 })
+
 // 请求拦截器：再发起请求之前，请求拦截器可以检测到，可以在请求发出去之前做一些事情
 requests.interceptors.request.use((config) => {
   // 请求头带参数
@@ -27,7 +28,7 @@ requests.interceptors.request.use((config) => {
   }
   // console.log(store)
   // 进度条开始
-  // nprogress.start()
+  nprogress.start()
   // config:配置对象，对象里面有一个很重要的属性，herders请求头
   return config
 })
@@ -36,7 +37,7 @@ requests.interceptors.request.use((config) => {
 requests.interceptors.response.use(
   (res) => {
     // 进度条结束
-    // nprogress.done
+    nprogress.done()
     //成功的回调函数：服务器响应的数据回来后，响应拦截器可以检测到，可以做一些事情
     return res.data
   },

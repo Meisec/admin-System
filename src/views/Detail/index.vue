@@ -7,15 +7,15 @@
     <section class="con">
       <!-- 导航路径区域 -->
       <div class="conPoin">
-        <span v-show="categoryView.category1Name">{{
-          categoryView.category1Name
-        }}</span>
-        <span v-show="categoryView.category2Name">{{
-          categoryView.category2Name
-        }}</span>
-        <span v-show="categoryView.category3Name">{{
-          categoryView.category3Name
-        }}</span>
+        <span v-show="categoryView.category1Name">
+          {{ categoryView.category1Name }}</span
+        >
+        <span v-show="categoryView.category2Name">
+          {{ categoryView.category2Name }}</span
+        >
+        <span v-show="categoryView.category3Name">
+          {{ categoryView.category3Name }}
+        </span>
       </div>
       <!-- 主要内容区域 -->
       <div class="mainCon">

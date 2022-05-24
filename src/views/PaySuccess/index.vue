@@ -23,7 +23,7 @@ export default {
     // 在渲染该组件的对应路由被 config 前调用
     // 不能获取组件实例  ·this·
     // 因为当前守卫执行前，组件实例还没被创建
-    if (from.path == '/pay') {
+    if (from.path === '/pay') {
       next()
     } else {
       next(false)
